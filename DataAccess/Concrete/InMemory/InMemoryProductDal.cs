@@ -73,6 +73,19 @@ namespace DataAccess.Concrete.InMemory
                         }
                     });
                 });
+
+                // Below code is same with the above code
+
+                //foreach (var pForProductToUpdate in productToUpdate.GetType().GetProperties().ToList())
+                //{
+                //    foreach (var pForProduct in product.GetType().GetProperties().ToList())
+                //    {
+                //        if (pForProductToUpdate.Name == pForProduct.Name)
+                //        {
+                //            pForProductToUpdate.SetValue(productToUpdate, pForProduct.GetValue(product));
+                //        }
+                //    }
+                //}
             }
         }
     }
