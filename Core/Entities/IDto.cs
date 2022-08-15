@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Abstract
+namespace Core.Entities
 {
-    // The class which implements the IEntity interface is a database table. 
-    public interface IEntity
+    // DTO : Data Transfer Object
+    public interface IDto
     {
     }
 }
