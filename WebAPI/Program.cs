@@ -1,18 +1,26 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// IoC Container implementation of the Autofac
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
+// IoC Container implementation of the Autofac
+
 // Add services to the container.
 builder.Services.AddControllers();
 
-// IoC Container
+// IoC Container of .Net Framework
 // It was in the Startup.cs file in the previous versions of the .Net.
-builder.Services.AddSingleton<IProductService, ProductManager>();
-builder.Services.AddSingleton<IProductDal, EfProductDal>();
-// IoC Container
+//builder.Services.AddSingleton<IProductService, ProductManager>();  // We make this line comment line because we are not going to use the .Net's IoC Container. We will use Autofac to get access for creating AOP structure.
+//builder.Services.AddSingleton<IProductDal, EfProductDal>();  // We make this line comment line because we are not going to use the .Net's IoC Container. We will use Autofac to get access for creating AOP structure.
+// IoC Container of .Net Framework
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
