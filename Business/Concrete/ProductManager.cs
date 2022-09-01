@@ -121,7 +121,6 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        // Eğer mevcut kategori sayısı 15 i geçtiyse sisteme yeni ürün eklenemez.
         private IResult CheckIfCategoryLimitExceded()
         {
             var result = _categoryService.GetAll();
