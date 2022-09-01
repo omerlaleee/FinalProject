@@ -2,11 +2,6 @@
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Interceptors;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Aspects.Autofac.Validation
 {
@@ -15,6 +10,10 @@ namespace Core.Aspects.Autofac.Validation
         private Type _validatorType;
         public ValidationAspect(Type validatorType)
         {
+            // Defensive Coding : If you do not compare whether the given type is IValidator or not, 
+            // the program still works but there is a strict rule which the given type has to be IValidator.
+            // If it is not, the program gives error on the running time. To avoid from the running time
+            // error, we use defensive coding.
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
                 throw new System.Exception("It is not an validation class!");
