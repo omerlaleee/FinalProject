@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -30,6 +31,7 @@ namespace Business.Concrete
         // Constructer Injection
 
         [ValidationAspect(typeof(ProductValidator))]
+        [SecuredOperation("Admin")]
         public IResult Add(Product product)
         {
             var ruleResult = BusinessRules.Run(CheckIfProductCountOfCategoryCorrect(product.CategoryId),
@@ -58,10 +60,10 @@ namespace Business.Concrete
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 14)
-            {
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 14)
+            //{
+            //    return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            //}
             return new SuccessDataResult<List<Product>>(Messages.ProductsListed, _productDal.GetAll());
         }
 
@@ -91,10 +93,10 @@ namespace Business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
-            if (DateTime.Now.Hour == 16)
-            {
-                return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
-            }
+            //if (DateTime.Now.Hour == 16)
+            //{
+            //    return new ErrorDataResult<List<ProductDetailDto>>(Messages.MaintenanceTime);
+            //}
             return new SuccessDataResult<List<ProductDetailDto>>(Messages.ProductsListed, _productDal.GetProductDetails());
         }
 

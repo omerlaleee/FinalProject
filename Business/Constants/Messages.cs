@@ -24,11 +24,14 @@ namespace Business.Constants
         public static string ClaimsListed = "Claim'ler Listelendi.";
         public static string UserAdded = "Kullanıcı Eklendi.";
         public static string UserListed = "Kullanıcı Listelendi.";
+        public static string UsersListed = "Kullanıcılar Listelendi.";
         public static string UserRegistered = "Kullanıcı Kayıt Oldu.";
         public static string UserNotFound = "Kullanıcı Bulunumadı!";
         public static string PasswordError = "Parola Hatası!";
         public static string SuccessfulLogin = "Başarılı Giriş.";
         public static string UserAlreadyExists = "Kullanıcı Mevcut!";
         public static string AccessTokenCreated = "Token Oluşturuldu.";
+        public static string UserDeleted = "Kullanıcı Silindi.";
+        public static string UserUpdated = "Kullanıcı Güncellendi.";
     }
 }
