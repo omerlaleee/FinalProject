@@ -31,7 +31,7 @@ namespace Business.Concrete
         // Constructer Injection
 
         [ValidationAspect(typeof(ProductValidator))]
-        [SecuredOperation("product.add, admin")]
+        [SecuredOperation("Admin")]
         public IResult Add(Product product)
         {
             var ruleResult = BusinessRules.Run(CheckIfProductCountOfCategoryCorrect(product.CategoryId),
