@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Utilities.IoC
 {
+    // With this class, you can get service equivalent of any desired interface.
     public static class ServiceTool
     {
         public static IServiceProvider ServiceProvider { get; private set; }
