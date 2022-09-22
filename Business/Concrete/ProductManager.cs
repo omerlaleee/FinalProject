@@ -30,7 +30,7 @@ namespace Business.Concrete
         }
         // Constructer Injection
 
-        [SecuredOperation("admin, product.add")]
+        [SecuredOperation("admin,product.add")] // You have to give the claims without any whitespace before or after comma.
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
