@@ -58,7 +58,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect] // → Key / Value Pair
-        [PerformanceAspect(5)]
+        // [PerformanceAspect(5)] // → It was already added to the AspectInterceptorSelector.cs for all methods.
         public IDataResult<Product> GetById(int productId)
         {
             Thread.Sleep(5000);
