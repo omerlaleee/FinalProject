@@ -3,6 +3,7 @@ using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
@@ -57,8 +58,10 @@ namespace Business.Concrete
         }
 
         [CacheAspect] // → Key / Value Pair
+        [PerformanceAspect(5)]
         public IDataResult<Product> GetById(int productId)
         {
+            Thread.Sleep(5000);
             return new DataResult<Product>(true, "Ürün Listelendi", _productDal.Get(p => p.ProductId == productId));
             //return _productDal.Get(p => p.ProductId == productId);
         }
