@@ -1,4 +1,4 @@
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
@@ -22,6 +22,10 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterMod
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+// CORS Configuration 
+builder.Services.AddCors();
+// CORS Configuration 
 
 // JWT Configuartion
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
@@ -64,6 +68,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// CORS Configuration → If 4200th port wants to request anything, give it.
+app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
+// CORS Configuration 
 
 // Middlewares
 app.UseHttpsRedirection();
