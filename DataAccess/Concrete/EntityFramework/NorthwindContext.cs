@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = @"Server=OMER;Database=Northwind;Trusted_Connection=true";
+            string connectionString = @"Data Source=DESKTOP-L9ESE9R\OMER;Initial Catalog=Northwind;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             // string connectionString2 = @"Data Source=OMER;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             optionsBuilder.UseSqlServer(connectionString);
         }
