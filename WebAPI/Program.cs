@@ -69,6 +69,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Extension which is created by us for exception handling.
+app.ConfigureCustomExceptionMiddleware();
+// Extension which is created by us for exception handling.
+
 // CORS Configuration → If 4200th port wants to request anything, give it.
 app.UseCors(builder=>builder.WithOrigins("http://localhost:4200", "http://localhost:56452").AllowAnyHeader());
 // CORS Configuration 
