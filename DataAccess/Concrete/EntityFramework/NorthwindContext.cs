@@ -14,7 +14,10 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connectionString = @"Data Source=DESKTOP-L9ESE9R\OMER;Initial Catalog=Northwind;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+            // Connection Timeout was set to 9999999.
+            // Because i got an error like : Microsoft.Data.SqlClient.SqlException: 'Execution Timeout Expired. The timeout period elapsed prior to completion of the operation or the server is not responding.'
+            // It was 30 as default.
+            string connectionString = @"Data Source=DESKTOP-L9ESE9R\OMER;Initial Catalog=Northwind;Integrated Security=True;Connect Timeout=9999999;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
             // string connectionString2 = @"Data Source=OMER;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             optionsBuilder.UseSqlServer(connectionString);
         }
